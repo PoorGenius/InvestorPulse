@@ -50,7 +50,7 @@ const Navbar = () => {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    className="list-none" // Removes default list styling
+                                    className="list-none"
                                 >
                                     <a href={link.url} className="text-white hover:text-gray-300 transition-colors duration-300">
                                         {link.title}
