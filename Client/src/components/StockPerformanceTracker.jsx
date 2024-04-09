@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import useIsMobile from "../hooks/useIsMobile";
+import { updateCoinData } from "../api/fetchToGeckoApi";
 
 import { arrowDown, arrowUp } from "../assets";
 
@@ -42,29 +43,10 @@ const StockPerformanceTracker = ({ fetchOn }) => {
     // Adjust the useEffect hook for fetching data
     useEffect(() => {
         if (!updateData && fetchOn) return;
-        if (!fetchOn) return setFinancialsData([]); //REMOVE TO FETCH DATA
-        const fetchData = async () => {
-            try {
-                const response = await fetch("http://localhost:3000/api/gecko/updateData", {
-                    method: "POST",
-                });
+        if (!fetchOn) return setFinancialsData([]);
 
-                const data = await response.json();
+        updateCoinData(fetchOn, setFinancialsData, setUpdateData);
 
-                if (data.message === "success") {
-                    console.log("Data updated successfully");
-                    const response = await fetch("http://localhost:3000/api/gecko/getData");
-                    const newData = await response.json();
-                    setFinancialsData(newData);
-                }
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setUpdateData(false); // Ensure this is set to false after the fetch operation
-            }
-        };
-
-        fetchData();
     }, [updateData]); // Add updateData as a dependency
 
     // Adjust the useEffect hook for managing index and deciding when to fetch new data

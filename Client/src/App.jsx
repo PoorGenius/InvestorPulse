@@ -14,7 +14,7 @@ const App = () => {
 
                     <p className="w-full text-center text-white opacity-[0.5] text-[14px] font-poppins font-light"
                     >24h <br />Data By CoinGecko</p>
-                    <StockPerformanceTracker fetchOn={false} />
+                    <StockPerformanceTracker fetchOn={true} />
                 </main>
             </div>
         </div>
