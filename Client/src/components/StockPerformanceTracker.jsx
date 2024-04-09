@@ -4,7 +4,7 @@ import useIsMobile from "../hooks/useIsMobile";
 
 import { arrowDown, arrowUp } from "../assets";
 
-const DisplayFinancials = ({ financials, isFetching }) => {
+const DisplayFinancials = ({ financials, isFetching = true }) => {
     return (
         <>
             {isFetching && <p className="text-white text-[22px]">Fetching data...</p>}
@@ -30,7 +30,7 @@ const DisplayFinancials = ({ financials, isFetching }) => {
     );
 };
 
-const StockPerformanceTracker = () => {
+const StockPerformanceTracker = ({ fetchOn }) => {
     const isMobile = useIsMobile();
     const [updateData, setUpdateData] = useState(true);
     const [TrackIndex, setTrackIndex] = useState([0, 1, 2, 3, 4]);
@@ -41,7 +41,8 @@ const StockPerformanceTracker = () => {
 
     // Adjust the useEffect hook for fetching data
     useEffect(() => {
-        if (!updateData) return;
+        if (!updateData && fetchOn) return;
+        if (!fetchOn) return setFinancialsData([]); //REMOVE TO FETCH DATA
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:3000/api/gecko/updateData", {
