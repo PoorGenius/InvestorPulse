@@ -4,9 +4,10 @@ import useIsMobile from "../hooks/useIsMobile";
 
 import { arrowDown, arrowUp } from "../assets";
 
-const DisplayFinancials = ({ financials }) => {
+const DisplayFinancials = ({ financials, isFetching }) => {
     return (
         <>
+            {isFetching && <p className="text-white text-[22px]">Fetching data...</p>}
             {financials.map((financial, idx) => (
                 <div className="flex gap-2" key={financial.name + idx}>
                     <div className="flex flex-col gap-2">
@@ -36,11 +37,11 @@ const StockPerformanceTracker = () => {
     const [TrackItemIterations, setTrackItemIterations] = useState(0); // Add this state to keep track of the number of iterations [0, 1, 2, 3, 4
     const [financialsData, setFinancialsData] = useState([]);
 
+    const displaySize = isMobile ? 3 : 5;
+
     // Adjust the useEffect hook for fetching data
     useEffect(() => {
         if (!updateData) return;
-
-        console.log("Accessing new data");
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:3000/api/gecko/updateData", {
@@ -67,26 +68,48 @@ const StockPerformanceTracker = () => {
 
     // Adjust the useEffect hook for managing index and deciding when to fetch new data
     useEffect(() => {
-
-        setTrackItemIterations(TrackItemIterations + 1);
         const timeoutId = setTimeout(() => {
             setTrackIndex(current => current.map(index => (index + 1 >= financialsData.length ? 0 : index + 1)));
+            setTrackItemIterations(current => current + 1);
         }, 3000);
 
+        // Determine when to fetch new data before the cycle repeats
+        const itemsLeftUntilCycleRepeat = financialsData.length - TrackItemIterations;
+        // Adjust the buffer based on your displaySize; you might need to tweak this value
+        const fetchBuffer = displaySize * 2;
+
+        if (itemsLeftUntilCycleRepeat <= fetchBuffer && !updateData) {
+            setUpdateData(true);
+            setTrackItemIterations(0); // Reset iterations upon deciding to fetch new data
+        };
+
         return () => clearTimeout(timeoutId); // Cleanup
-    }, [TrackIndex, financialsData.length]);
+    }, [TrackIndex, financialsData.length, displaySize, updateData, TrackItemIterations]);
 
-    // The rest of your component remains the same
 
-    const displaySize = isMobile ? 3 : 5; // Or whatever your desktop size is
-    const dataToDisplay = financialsData.slice(TrackIndex[0], TrackIndex[displaySize - 1] + 1);
+    // here i have to find if the data has to be sliced differently, for example if trackIndex is [22,23,0] or [23,0,1] or [22,23,24,0,1]
+    // code here
 
-    FIXA IMORGON SÅ ATT DEN UPPDATERAR I SLUTET AV ALLA CURRENCIES SOM VISAS OCH ATT DET INTE LADDAR I 5 SEKUNDER FÖR VARJE GÅNG MED ITEMS HIDDEN
+    const calculateDataToDisplay = () => {
+        const endIndex = TrackIndex[displaySize - 1];
+        if (TrackIndex[0] <= endIndex) {
+            // No wrap, direct slice
+            return financialsData.slice(TrackIndex[0], endIndex + 1);
+        } else {
+            // Wrap around, slice in two parts and concatenate
+            return [
+                ...financialsData.slice(TrackIndex[0], financialsData.length),
+                ...financialsData.slice(0, endIndex + 1),
+            ];
+        }
+    };
+
+    const dataToDisplay = calculateDataToDisplay();
 
     return (
         <section className="w-full h-[100px] bg-secondary">
-            <div className={`w-full h-full items-center justify-center gap-8 md:gap-12 xl:gap-24 flex ${isMobile ? 'md:hidden' : 'hidden md:flex'}`}>
-                <DisplayFinancials financials={dataToDisplay} />
+            <div className="w-full h-full items-center justify-center gap-8 md:gap-12 xl:gap-24 flex">
+                <DisplayFinancials financials={dataToDisplay} isFetching={updateData} />
             </div>
         </section>
     )

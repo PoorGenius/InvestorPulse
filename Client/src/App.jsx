@@ -13,7 +13,7 @@ const App = () => {
                     <Hero />
 
                     <p className="w-full text-center text-white opacity-[0.5] text-[14px] font-poppins font-light"
-                    >24h Change</p>
+                    >24h <br />Powered By CoinGecko</p>
                     <StockPerformanceTracker />
                 </main>
             </div>
