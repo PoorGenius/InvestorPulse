@@ -42,7 +42,8 @@ const GraphCard = () => {
                         fontSize: "16px" // Optionally adjust the font size for visibility
                     },
                     ".MuiChartsAxis-tick": {
-                        fill: "white"
+                        fill: "white",
+                        stroke: "white"
                     },
                 }}
 
