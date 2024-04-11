@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactCardCarousel from 'react-card-carousel';
-import Card from "./Card";
+import Card from "./Cards/Card";
 import { CARDS_DATA } from '../constants';
 
 const CardsContainer = () => {
@@ -10,7 +10,6 @@ const CardsContainer = () => {
                 autoplay={true}
                 autoplay_speed={2500}
                 spread={"wide"}
-
             >
                 {CARDS_DATA.map((cardData, index) => (
                     <div key={index}>

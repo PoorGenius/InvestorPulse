@@ -1,6 +1,6 @@
 import React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart'; // Ensure you have installed @mui/x-charts and its dependencies
-import useScreenSize from '../hooks/useScreenSize';
+import useScreenSize from '../../hooks/useScreenSize';
 
 const calculateValue = (data, calculationType, currency) => {
     switch (calculationType) {

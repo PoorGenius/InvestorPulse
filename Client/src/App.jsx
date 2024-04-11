@@ -18,13 +18,6 @@ const App = () => {
                     <StockPerformanceTracker fetchOn={false} />
                 </main>
                 <About />
-                <section className="w-full">
-                    <h1>hello</h1>
-                    <h1>hello</h1>
-                    <h1>hello</h1>
-                    <h1>hello</h1>
-                    <h1>hello</h1>
-                </section>
             </div>
         </div>
     );
