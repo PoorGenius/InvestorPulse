@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import useIsMobile from "../hooks/useIsMobile";
+import useScreenSize from "../hooks/useScreenSize";
 import { updateCoinData } from "../api/fetchToGeckoApi";
 
 import { arrowDown, arrowUp } from "../assets";
@@ -32,7 +32,7 @@ const DisplayFinancials = ({ financials, isFetching = true }) => {
 };
 
 const StockPerformanceTracker = ({ fetchOn }) => {
-    const isMobile = useIsMobile();
+    const isMobile = useScreenSize() === 'sm';
     const [updateData, setUpdateData] = useState(true);
     const [TrackIndex, setTrackIndex] = useState([0, 1, 2, 3, 4]);
     const [TrackItemIterations, setTrackItemIterations] = useState(0); // Add this state to keep track of the number of iterations [0, 1, 2, 3, 4

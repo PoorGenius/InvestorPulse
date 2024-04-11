@@ -11,21 +11,23 @@ const App = () => {
                     <Navbar />
                 </header>
                 <main className="flex-1 flex flex-col">
-
-                    <div className="flex-1 flex flex-col justify-content-between">
-                        <Hero />
-
-                        <p className="w-full text-center text-white opacity-[0.5] text-[14px] font-poppins font-light"
-                        >24h <br />Data By CoinGecko</p>
-                        <StockPerformanceTracker fetchOn={false} />
-                    </div>
-                    <div className="flex flex-col gap-4 mt-4">
-                        <About />
-                    </div>
+                    <Hero />
+                    <p className="w-full text-center text-white opacity-[0.5] text-[14px] font-poppins font-light">
+                        24h <br />Data By CoinGecko
+                    </p>
+                    <StockPerformanceTracker fetchOn={false} />
                 </main>
+                <About />
+                <section className="w-full">
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                </section>
             </div>
         </div>
     );
 };
 
-export default App
+export default App;

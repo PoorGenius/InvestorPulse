@@ -1,9 +1,9 @@
 import { hand } from "../assets"
 import MemberButton from "./MemberButton"
-import useIsMobile from "../hooks/useIsMobile"
+import useScreenSize from "../hooks/useScreenSize"
 
 const Hero = () => {
-    const isMobile = useIsMobile()
+    const isMobile = useScreenSize() === 'sm';
 
     return (
         <section className="w-full h-full flex flex-col md:flex-row lg:gap-12 justify-center items-center font-poppins mt-8">
