@@ -10,9 +10,9 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="w-full pt-12 flex items-center justify-evenly">
+        <nav className="w-full pt-12 lg:pt-8 flex items-center justify-evenly">
             <div className="hidden sm:flex">
-                <MemberButton />
+                <MemberButton text="logo placeholder" />
             </div>
             <div className="hidden sm:flex justify">
                 <ul className="flex gap-8 text-[20px] font-poppins font-normal">

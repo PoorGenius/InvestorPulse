@@ -7,7 +7,7 @@ const App = () => {
     return (
         <div className="bg-primary w-full h-full">
             <div className="flex flex-col h-screen overflow-auto">
-                <header>
+                <header className>
                     <Navbar />
                 </header>
                 <main className="flex-1 flex flex-col">
