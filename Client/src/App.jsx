@@ -2,6 +2,9 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import StockPerformanceTracker from "./components/StockPerformanceTracker";
 import About from "./components/About";
+import Testimonials from "./components/Testimonials";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 const App = () => {
     return (
@@ -17,8 +20,11 @@ const App = () => {
                     </p>
                     <StockPerformanceTracker fetchOn={false} />
                 </main>
-                <About />
             </div>
+            <About />
+            <Testimonials />
+            <Contact />
+            <Footer />
         </div>
     );
 };

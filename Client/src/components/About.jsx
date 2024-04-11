@@ -9,7 +9,7 @@ const About = () => {
                 <h1 className="text-[24px] sm:text-[42px] lg:text-[64px] font-bold mt-4">What do we do?</h1>
                 <p className="text-[14px] sm:text-[18px] lg:text-[24px] text-center">We allow you to track your investments in a visual <br />and effective way, to help you keep track of your economy.</p>
             </div>
-            <div className="w-full flex justify-center min-h-[200px] sm:min-h-[250px] md:min-h-[350px] lg:min-h-[400px]">
+            <div className="w-full flex relative items-center justify-center min-h-[200px] sm:min-h-[250px] md:min-h-[350px] lg:min-h-[400px]">
                 <CardsContainer />
             </div>
             <div className="w-full flex flex-col items-center">
