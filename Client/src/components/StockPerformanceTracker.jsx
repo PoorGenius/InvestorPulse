@@ -8,7 +8,7 @@ import { arrowDown, arrowUp } from "../assets";
 const DisplayFinancials = ({ financials, isFetching = true }) => {
     return (
         <>
-            {isFetching && <p className="text-white text-[22px]">Fetching data...</p>}
+            {isFetching && <p className="text-white text-[22px]">Sparing API...</p>}
             {financials.map((financial, idx) => (
                 <div className="flex gap-2" key={financial.name + idx}>
                     <div className="flex flex-col gap-2">

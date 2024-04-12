@@ -1,19 +1,20 @@
 // import { bnb, btc, usdt, xrp, eth } from "./assets";
 
-export const NAV_LINKS = [
-    {
-        title: "Home",
-        url: "/",
-    },
-    {
-        title: "About Us",
-        url: "/about",
-    },
-    {
-        title: "Contact Us",
-        url: "/contact",
-    }
-];
+export const NAV_LINKS =
+    [
+        {
+            title: "Home",
+            url: "/",
+        },
+        {
+            title: "About Us",
+            url: "/about",
+        },
+        {
+            title: "Contact Us",
+            url: "/contact",
+        }
+    ];
 
 // export const FINANCIALS = [
 //     {
@@ -74,4 +75,34 @@ export const CARDS_DATA =
         }
 
 
+    ];
+
+import { albin, rafey, oliver } from "./assets";
+
+export const TESTIMONIALS =
+    [
+        {
+            id: 1,
+            rating: 4,
+            name: "Oliver Söderlund Granzer",
+            picture: oliver,
+            position: "CEO of GetGymWear",
+            review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut",
+        },
+        {
+            id: 2,
+            rating: 5,
+            name: "Rafey Odrani",
+            picture: rafey,
+            position: "School boy",
+            review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+        },
+        {
+            id: 3,
+            rating: 4,
+            name: "Albin Hasanaj",
+            picture: albin,
+            position: "CEO of Kachow",
+            review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+        }
     ];

@@ -25,25 +25,17 @@ const GraphCard = () => {
                     }
                 }
                 sx={{
-                    // Optional: Change the color of the X-axis line to white if needed
-                    ".MuiChartsAxis-bottom .MuiChartsAxis-line": {
-                        stroke: "white",
-                        strokeWidth: 2
-                    },
-                    ".MuiChartsAxis-left .MuiChartsAxis-line": {
-                        stroke: "white",
-                        strokeWidth: 2
-                    },
-                    ".MuiChartsAxis-tickLabel": {
-                        fill: "white",
-                    },
                     ".MuiChartsAxis-bottom .MuiChartsAxis-label": {
                         fill: "white", // Set the axis label color to white
                         fontSize: "16px" // Optionally adjust the font size for visibility
                     },
-                    ".MuiChartsAxis-tick": {
-                        fill: "white",
-                        stroke: "white"
+                    ".MuiChartsAxis-directionX": {
+                        stroke: "white",
+                        fill: "white", // Set the axis color to white
+                    },
+                    ".MuiChartsAxis-directionY": {
+                        stroke: "white",
+                        fill: "white", // Set the axis color to white
                     },
                 }}
 
